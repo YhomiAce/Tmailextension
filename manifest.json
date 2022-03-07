@@ -1,0 +1,15 @@
+{
+    "name": "Tmail",
+    "description": "Tmail Extension for Podio",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_scripts": [
+      {
+        "matches":[
+          "https://podio.com/*",
+			    "https://*.podio.com/*"
+        ],
+        "js":["jquery-3.6.0.min.js", "app.js"]
+      }
+    ]
+}
