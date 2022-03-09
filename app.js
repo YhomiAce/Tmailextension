@@ -6,7 +6,7 @@ $(window).on("load",()=>{
         var headerElement = $(".img.selector.header-title");
         console.log(headerElement);
 
-        const emailBtnDiv = '<div class="text" style="display: inline-block;margin-left: 25px;"><a id="thatAppPodioBtn" class="button-new gm-btn-btn gm-btn-ltbl" style="margin-bottom:0" title="Send a new Email about this Item">T-Email</a></div>'
+        const emailBtnDiv = '<div class="text" style="display: inline-block;margin-left: 25px;"><a id="thatAppPodioBtn" style="margin-bottom:0;background:#D7A417;cursor:pointer;padding: 5px 10px;color:#fff !important; font-size:1.4rem" title="Send a new Email about this Item">T-Email</a></div>'
         var emailBtnList = document.createElement("li");
         
         emailBtnList.innerHTML = emailBtnDiv;
@@ -30,7 +30,7 @@ $(window).on("load",()=>{
         
 
         $("#thatAppPodioBtn").click(function(){
-            url = "http://localhost:3000/tmail-message/"+itemId;
+            url = "http://localhost:3000/new-tmail-message/"+itemId;
             OpenNewWindow(url);
         })
     }
@@ -42,6 +42,7 @@ $(window).on("load",()=>{
             setTimeout(()=>{
                 appendButton()
                 setupAppButton()
+                getComment()
 
             }, 2000)
         }else{
@@ -128,3 +129,25 @@ function OpenNewWindow(MyPath)
 
 
 
+function getComment(){
+    const replyEmailBtnDiv = '<div class="text" style="display: inline-block;margin-left: 25px;"><a class="thatAppPodioBtn" style="margin-bottom:0;background:#F7C948;font-size:18px;cursor:pointer;padding: 7px 10px;color:#fff !important" title="Send a new Email about this Item">Reply Email</a></div>'
+    var replyEmail = document.createElement("p");
+    replyEmail.innerHTML = replyEmailBtnDiv
+ 
+    $(".markdown.collapsed > p:contains('Tmail message')").parent().addClass("tmail-comment");
+    // const commentDivs = $('.markdown.collapsed');
+    const replyBtn = $(".tmail-comment a:contains('Reply')")
+    replyBtn.css({background: "#D7A417", padding:"5px 10px", color:"#fff", fontSize:"12px", fontWeight: "bold"});
+    replyBtn.addClass("replyTmail")
+    const fwdBtn = $(".tmail-comment a:contains('Fwd')")
+    fwdBtn.css({background: "#D7A417", padding:"5px 10px", color:"#fff", fontSize:"12px", fontWeight: "bold"});
+    fwdBtn.addClass("replyTmail");
+
+    $(".replyTmail").click(e=>{
+        e.preventDefault();
+        var url = e.target.href;
+        console.log(e, url);
+        OpenNewWindow(url);
+    })
+    
+}
