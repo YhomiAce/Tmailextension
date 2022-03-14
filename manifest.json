@@ -3,6 +3,9 @@
     "description": "Tmail Extension for Podio",
     "version": "1.0",
     "manifest_version": 2,
+    "browser_action": {
+      "default_icons": "icon.png"
+    },
     "content_scripts": [
       {
         "matches":[
@@ -11,5 +14,11 @@
         ],
         "js":["jquery-3.6.0.min.js", "app.js"]
       }
-    ]
+    ],
+    "icons": { 
+      "16": "images/tmail.png",
+      "32": "images/tmail2.png",
+      "48": "images/tmail3.png",
+     "128": "images/tmail4.png" 
+    }
 }
