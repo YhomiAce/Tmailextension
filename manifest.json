@@ -1,11 +1,8 @@
 {
-    "name": "Tmail",
+    "name": "Tmail For Podio",
     "description": "Tmail Extension for Podio",
     "version": "1.0",
-    "manifest_version": 2,
-    "browser_action": {
-      "default_icons": "icon.png"
-    },
+    "manifest_version": 3,
     "content_scripts": [
       {
         "matches":[
